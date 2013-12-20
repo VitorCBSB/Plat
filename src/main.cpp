@@ -6,6 +6,7 @@
  */
 
 #include <string>
+#include <list>
 #include "SDLBase.h"
 
 int main() {

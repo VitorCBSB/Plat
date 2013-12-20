@@ -9,10 +9,9 @@
 #define SDLBASE_H_
 
 #include "SDL2/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_rotozoom.h"
+#include "SDL2/SDL_image.h"
 #include "SDL/SDL_ttf.h"
-#include "SDL/SDL_mixer.h"
+#include "SDL2/SDL_mixer.h"
 #include <stdlib.h>
 #include <string>
 
@@ -47,8 +46,8 @@ public:
 
 //	static SDL_Surface* clip(SDL_Surface* original, SDL_Rect* clip);
 
-	static SDL_Surface* rotoZoom(SDL_Surface* surface, float angle,
-			float scaleX, float scaleY);
+//	static SDL_Surface* rotoZoom(SDL_Surface* surface, float angle,
+//			float scaleX, float scaleY);
 
 	static void renderTexture(SDL_Texture* texture, SDL_Rect* clip,
 			SDL_Rect* dst);

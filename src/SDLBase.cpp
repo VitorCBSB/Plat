@@ -44,23 +44,7 @@ SDL_Renderer* SDLBase::getScreenRenderer() {
 }
 
 SDL_Texture* SDLBase::loadImage(std::string fileName) {
-
-	SDL_Surface* surface = 0;
-	SDL_Texture* tex = 0;
-
-	surface = IMG_Load(fileName.c_str());
-	if (surface == NULL) {
-		fprintf(stderr, "Nao consegui carregar a imagem no caminho %s\n",
-				fileName.c_str());
-		exit(1);
-	}
-
-	tex = SDL_CreateTextureFromSurface(screenRenderer, surface);
-
-	SDL_FreeSurface(surface);
-
-	return tex;
-
+	return IMG_LoadTexture(screenRenderer, fileName.c_str());
 }
 
 //SDL_Surface* SDLBase::clip(SDL_Surface* original, SDL_Rect* clip) {
@@ -82,17 +66,17 @@ SDL_Texture* SDLBase::loadImage(std::string fileName) {
 //
 //}
 
-SDL_Surface* SDLBase::rotoZoom(SDL_Surface* surface, float angle, float scaleX,
-		float scaleY) {
-
-	if (surface == NULL || scaleX < 0 || scaleY < 0) {
-		fprintf(stderr,
-				"Erro na funcao SDLBase::rotozoom: surface esta NULL ou alguma escala foi passada como negativo.\n");
-		exit(1);
-	}
-
-	return rotozoomSurfaceXY(surface, angle, scaleX, scaleY, 1);
-}
+//SDL_Surface* SDLBase::rotoZoom(SDL_Surface* surface, float angle, float scaleX,
+//		float scaleY) {
+//
+//	if (surface == NULL || scaleX < 0 || scaleY < 0) {
+//		fprintf(stderr,
+//				"Erro na funcao SDLBase::rotozoom: surface esta NULL ou alguma escala foi passada como negativo.\n");
+//		exit(1);
+//	}
+//
+//	return rotozoomSurfaceXY(surface, angle, scaleX, scaleY, 1);
+//}
 
 //void SDLBase::drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing) {
 //	int deltax = abs(x2 - x1); // The difference between the x's
