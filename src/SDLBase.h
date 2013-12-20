@@ -19,7 +19,8 @@
 class SDLBase {
 
 private:
-	static SDL_Surface* screen;
+	static SDL_Renderer* screenRenderer;
+	static SDL_Window* screen;
 
 public:
 
@@ -40,19 +41,19 @@ public:
 
 	static void finalizaSDL();
 
-	static SDL_Surface* getScreen();
+	static SDL_Renderer* getScreenRenderer();
 
-	static SDL_Surface* loadImage(std::string fileName);
+	static SDL_Texture* loadImage(std::string fileName);
 
-	static SDL_Surface* clip(SDL_Surface* original, SDL_Rect* clip);
+//	static SDL_Surface* clip(SDL_Surface* original, SDL_Rect* clip);
 
 	static SDL_Surface* rotoZoom(SDL_Surface* surface, float angle,
 			float scaleX, float scaleY);
 
-	static void renderSurface(SDL_Surface* surface, SDL_Rect* clip,
+	static void renderTexture(SDL_Texture* texture, SDL_Rect* clip,
 			SDL_Rect* dst);
 
-	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
+//	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
 
 	static void atualizarTela();
 
