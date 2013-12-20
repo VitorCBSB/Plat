@@ -10,6 +10,7 @@
 #include "SDLBase.h"
 
 int main() {
+	std::string lol;
 	SDL_Texture* imagem;
 	SDLBase::inicializaSDL();
 
