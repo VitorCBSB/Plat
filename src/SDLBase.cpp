@@ -155,7 +155,7 @@ void SDLBase::renderTexture(SDL_Texture* texture, SDL_Rect* clip,
 		SDL_Rect* dst) {
 
 	if (SDL_RenderCopy(screenRenderer, texture, clip, dst) == -1) {
-		fprintf(stderr, "Nao consegui blitar uma surface de dimensoes: %dx%d",
+		fprintf(stderr, "Nao consegui blitar uma texture de dimensoes: %dx%d",
 				clip->w, clip->h);
 		exit(1);
 	}
