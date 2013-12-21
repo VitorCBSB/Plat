@@ -12,7 +12,10 @@ SDL_Window* SDLBase::screen;
 
 int SDLBase::inicializaSDL() {
 
-	SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_TIMER);
+	if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_TIMER) == -1) {
+		fprintf(stderr, "Erro na inicializacao da SDL.\n");
+		exit(1);
+	}
 
 	screen = SDL_CreateWindow("Plat", 500, 500, 800, 600, SDL_WINDOW_SHOWN);
 	screenRenderer = SDL_CreateRenderer(screen, -1,
@@ -44,7 +47,12 @@ SDL_Renderer* SDLBase::getScreenRenderer() {
 }
 
 SDL_Texture* SDLBase::loadImage(std::string fileName) {
-	return IMG_LoadTexture(screenRenderer, fileName.c_str());
+	SDL_Texture* texture;
+	if ((texture = IMG_LoadTexture(screenRenderer, fileName.c_str())) == NULL) {
+		fprintf(stderr, "Nao consegui carregar a imagem %s.\n", fileName.c_str());
+		exit(1);
+	}
+	return texture;
 }
 
 //SDL_Surface* SDLBase::clip(SDL_Surface* original, SDL_Rect* clip) {
@@ -160,6 +168,10 @@ void SDLBase::renderTexture(SDL_Texture* texture, SDL_Rect* clip,
 		exit(1);
 	}
 
+}
+
+void SDLBase::limparTela() {
+	SDL_RenderClear(screenRenderer);
 }
 
 void SDLBase::atualizarTela() {

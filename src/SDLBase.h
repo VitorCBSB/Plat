@@ -54,6 +54,8 @@ public:
 
 //	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
 
+	static void limparTela();
+
 	static void atualizarTela();
 
 };

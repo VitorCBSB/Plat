@@ -7,23 +7,28 @@
 
 #include <string>
 #include <list>
+#include <memory>
 #include "SDLBase.h"
+#include "Sprite.h"
 
 int main() {
-	SDL_Texture* imagem;
-	SDL_Rect dst;
+	SDL_Rect clip;
+
+	clip.x = 0;
+	clip.y = 0;
+	clip.w = 50;
+	clip.h = 50;
+
 	SDLBase::inicializaSDL();
+	std::auto_ptr<Sprite> sprite(new Sprite("../img/teste.jpg"));
+	SDLBase::limparTela();
 
-	dst.x = 0;
-	dst.y = 0;
+	sprite->clipTexture(clip);
+	sprite->render(30, 0);
 
-	imagem = SDLBase::loadImage(std::string("../img/teste.jpg"));
-	SDL_QueryTexture(imagem, NULL, NULL, &dst.w, &dst.h);
-	SDLBase::renderTexture(imagem, NULL, &dst);
 	SDLBase::atualizarTela();
 	SDL_Delay(5000);
 
-	SDL_DestroyTexture(imagem);
 	SDLBase::finalizaSDL();
 	return 0;
 }
