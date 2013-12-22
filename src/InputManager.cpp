@@ -54,6 +54,8 @@ void InputManager::update() {
 		case SDL_QUIT:
 			quitGame = true;
 			break;
+		default:
+			break;
 		}
 	}
 }
