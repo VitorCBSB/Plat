@@ -20,19 +20,19 @@ void TestObj::update(double dt) {
 	acceleration = Vector2(0, 0);
 
 	if (InputManager::get()->isKeyHeld(SDLK_w)) {
-		acceleration = Vector2(0, -10);
+		acceleration = Vector2(0, -100);
 	}
 	if (InputManager::get()->isKeyHeld(SDLK_a)) {
-		acceleration = Vector2(-10, 0);
+		acceleration = Vector2(-100, 0);
 	}
 	if (InputManager::get()->isKeyHeld(SDLK_s)) {
-		acceleration = Vector2(0, 10);
+		acceleration = Vector2(0, 100);
 	}
 	if (InputManager::get()->isKeyHeld(SDLK_d)) {
-		acceleration = Vector2(10, 0);
+		acceleration = Vector2(100, 0);
 	}
 
-	velocity = velocity + acceleration * dt;
+	velocity = velocity + (acceleration * dt);
 	velocity.x = fmin(MAX_SPEED, velocity.x);
 	velocity.y = fmin(MAX_SPEED, velocity.y);
 
