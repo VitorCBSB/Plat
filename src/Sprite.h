@@ -10,7 +10,7 @@
 
 #include "SDLBase.h"
 #include <string>
-#include <memory>
+#include <tr1/memory>
 
 class Sprite {
 private:
@@ -32,6 +32,6 @@ public:
 	int getWidthClipped();
 };
 
-typedef std::auto_ptr<Sprite> SpritePtr;
+typedef std::tr1::shared_ptr<Sprite> SpritePtr;
 
 #endif /* SPRITE_H_ */
