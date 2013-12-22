@@ -13,11 +13,20 @@
 class Camera {
 private:
 	Vector2 position;
+	static Camera* instance;
+	Camera();
 
 public:
-	Camera(Vector2 position);
+	Camera* getInstance() {
+		if (instance) {
+			return instance;
+		}
+		return new Camera();
+	}
 	int getX();
+	void setX(int x);
 	int getY();
+	void setY(int y);
 };
 
 #endif /* CAMERA_H_ */

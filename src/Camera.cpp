@@ -7,8 +7,8 @@
 
 #include "Camera.h"
 
-Camera::Camera(Vector2 position) :
-		position(position) {
+Camera::Camera() :
+		position(Vector2(0, 0)) {
 }
 
 int Camera::getX() {
@@ -17,4 +17,12 @@ int Camera::getX() {
 
 int Camera::getY() {
 	return position.y;
+}
+
+void Camera::setX(int x) {
+	position.x = x;
+}
+
+void Camera::setY(int y) {
+	position.y = y;
 }
