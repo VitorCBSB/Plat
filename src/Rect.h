@@ -14,6 +14,8 @@ public:
 	float w, h;
 
 	Rect(float x, float y, float w, float h);
+
+	float area();
 };
 
 #endif /* RECT_H_ */
