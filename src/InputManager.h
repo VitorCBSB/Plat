@@ -34,7 +34,7 @@ private:
 public:
 	virtual ~InputManager();
 
-	static InputManager* getInstance() {
+	static InputManager* get() {
 		if (!instance) {
 			instance = new InputManager();
 		}

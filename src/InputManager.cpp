@@ -38,10 +38,10 @@ void InputManager::update() {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
-			keyDown[event.key.keysym.scancode] = true;
+			keyDown[event.key.keysym.sym] = true;
 			break;
 		case SDL_KEYUP:
-			keyUp[event.key.keysym.scancode] = true;
+			keyUp[event.key.keysym.sym] = true;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			mouseDown[event.button.button] = true;
