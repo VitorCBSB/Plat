@@ -15,14 +15,14 @@
 
 class TestObj: public GameObject {
 private:
-	Sprite* sprite;
+	SpritePtr sprite;
 	Vector2 position;
 public:
-	TestObj(Sprite* sprite, Vector2 position);
+	TestObj(SpritePtr sprite, Vector2 position);
 	virtual ~TestObj();
 
 	void update(double dt);
-	void render(float cameraX, float cameraY);
+	void render(float cameraX = 0, float cameraY = 0);
 };
 
 #endif /* TESTOBJ_H_ */

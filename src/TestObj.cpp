@@ -7,7 +7,7 @@
 
 #include "TestObj.h"
 
-TestObj::TestObj(Sprite* sprite, Vector2 position) :
+TestObj::TestObj(SpritePtr sprite, Vector2 position) :
 		sprite(sprite), position(position) {
 
 }
@@ -15,3 +15,10 @@ TestObj::TestObj(Sprite* sprite, Vector2 position) :
 TestObj::~TestObj() {
 }
 
+void TestObj::update(double dt) {
+
+}
+
+void TestObj::render(float cameraX, float cameraY) {
+	sprite->render(position.x - cameraX, position.y - cameraY);
+}
