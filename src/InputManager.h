@@ -17,7 +17,7 @@ private:
 	static InputManager* instance;
 
 	Uint32 mouseState;
-	Uint32* keyStates;
+	const Uint8* keyStates;
 	bool quitGame;
 	int mouseX;
 	int mouseY;
@@ -45,12 +45,12 @@ public:
 	bool isKeyDown(int key);
 	bool isKeyUp(int key);
 	bool isKeyHeld(int key);
-	bool isLeftMouseDown(int button);
-	bool isLeftMouseUp(int button);
-	bool isLeftMouseHeld(int button);
+	bool isMouseDown(int button);
+	bool isMouseUp(int button);
+	bool isMouseHeld(int button);
 	int mousePosX();
 	int mousePosY();
-	bool isMouseInside(SDL_Rect* rect);
+	bool isMouseInside(SDL_Rect rect);
 	bool QuitGame();
 };
 

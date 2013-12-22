@@ -32,6 +32,9 @@ void InputManager::update() {
 	initKeyboard();
 	initMouse();
 
+	keyStates = SDL_GetKeyboardState(NULL);
+	mouseState = SDL_GetMouseState(&mouseX, &mouseY);
+
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
@@ -46,6 +49,50 @@ void InputManager::update() {
 		case SDL_MOUSEBUTTONUP:
 			mouseUp[event.button.button] = true;
 			break;
+		case SDL_QUIT:
+			quitGame = true;
+			break;
 		}
 	}
+}
+
+bool InputManager::isKeyDown(int key) {
+	return keyDown[key];
+}
+
+bool InputManager::isKeyUp(int key) {
+	return keyUp[key];
+}
+
+bool InputManager::isKeyHeld(int key) {
+	return keyStates[key];
+}
+
+bool InputManager::isMouseDown(int button) {
+	return mouseDown[button];
+}
+
+bool InputManager::isMouseUp(int button) {
+	return mouseUp[button];
+}
+
+bool InputManager::isMouseHeld(int button) {
+	return mouseState & button;
+}
+
+int InputManager::mousePosX() {
+	return mouseX;
+}
+
+int InputManager::mousePosY() {
+	return mouseY;
+}
+
+bool InputManager::isMouseInside(SDL_Rect rect) {
+	return mouseX >= rect.x && (mouseX <= rect.x + rect.w) && mouseY >= rect.y
+			&& (mouseY <= rect.y + rect.h);
+}
+
+bool InputManager::QuitGame() {
+	return quitGame;
 }
