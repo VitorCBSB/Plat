@@ -45,6 +45,6 @@ Vector2 Vector2::rotate(float angleInDegrees) {
 }
 
 Vector2 Vector2::normalVector() {
-	return rotateVector(90);
+	return rotate(90);
 }
 
