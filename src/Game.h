@@ -8,9 +8,12 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#define FPS 60.0
+
 #include "SDLBase.h"
 #include "Sprite.h"
-#include <memory>
+#include "TestObj.h"
+#include "InputManager.h"
 #include <string>
 
 class Game {

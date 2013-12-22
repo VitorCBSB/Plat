@@ -16,13 +16,17 @@ Game::~Game() {
 }
 
 int Game::run() {
-	std::auto_ptr<Sprite> sprite(new Sprite("../img/teste.jpg"));
+	TestObjPtr testObj(
+			new TestObj(SpritePtr(new Sprite("../img/wow.png")),
+					Vector2(400, 300)));
 
 	while (!SDL_QuitRequested()) {
-		sprite->render();
+		InputManager::get()->update();
+		testObj->update(1 / FPS);
+		testObj->render(0, 0);
 		SDLBase::atualizarTela();
 		SDLBase::limparTela();
-		SDL_Delay(16);
+		SDL_Delay(1 / FPS);
 	}
 
 	return 0;
