@@ -49,7 +49,8 @@ SDL_Renderer* SDLBase::getScreenRenderer() {
 SDL_Texture* SDLBase::loadImage(std::string fileName) {
 	SDL_Texture* texture;
 	if ((texture = IMG_LoadTexture(screenRenderer, fileName.c_str())) == NULL) {
-		fprintf(stderr, "Nao consegui carregar a imagem %s.\n", fileName.c_str());
+		fprintf(stderr, "Nao consegui carregar a imagem %s.\n",
+				fileName.c_str());
 		exit(1);
 	}
 	return texture;

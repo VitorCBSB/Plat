@@ -18,7 +18,7 @@ Game::~Game() {
 int Game::run() {
 	std::auto_ptr<Sprite> sprite(new Sprite("../img/teste.jpg"));
 
-	while(!SDL_QuitRequested()) {
+	while (!SDL_QuitRequested()) {
 		sprite->render();
 		SDLBase::atualizarTela();
 		SDLBase::limparTela();
