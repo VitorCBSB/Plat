@@ -17,7 +17,7 @@ private:
 	Camera();
 
 public:
-	Camera* getInstance() {
+	Camera* get() {
 		if (instance) {
 			return instance;
 		}

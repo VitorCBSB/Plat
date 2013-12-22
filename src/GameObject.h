@@ -15,7 +15,7 @@ public:
 	GameObject();
 	virtual ~GameObject();
 
-	virtual void render(Camera camera) = 0;
+	virtual void render(float cameraX = 0, float cameraY = 0) = 0;
 	virtual void update(double dt) = 0;
 };
 
