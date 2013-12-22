@@ -22,6 +22,7 @@ public:
 	float length();
 	Vector2 normalize();
 	Vector2 rotate(float angleInDegrees);
+	Vector2 normalVector();
 };
 
 #endif /* VECTOR2_H_ */
