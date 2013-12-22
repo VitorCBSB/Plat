@@ -14,6 +14,7 @@
 #include "InputManager.h"
 #include "SDLBase.h"
 #include <math.h>
+#include <tr1/memory>
 
 #define MAX_SPEED 50.0
 
@@ -31,5 +32,7 @@ public:
 	void update(double dt);
 	void render(float cameraX = 0, float cameraY = 0);
 };
+
+typedef std::tr1::shared_ptr<TestObj> TestObjPtr;
 
 #endif /* TESTOBJ_H_ */
