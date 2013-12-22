@@ -34,7 +34,7 @@ void InputManager::update() {
 	initKeyboard();
 	initMouse();
 
-	keyStates = SDL_GetKeyboardState(NULL);
+	keyStates = (Uint8*) SDL_GetKeyboardState(NULL);
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY);
 
 	while (SDL_PollEvent(&event)) {

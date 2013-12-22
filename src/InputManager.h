@@ -17,7 +17,7 @@ private:
 	static InputManager* instance;
 
 	Uint32 mouseState;
-	const Uint8* keyStates;
+	Uint8* keyStates;
 	bool quitGame;
 	int mouseX;
 	int mouseY;
