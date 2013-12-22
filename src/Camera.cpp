@@ -7,7 +7,8 @@
 
 #include "Camera.h"
 
-Camera::Camera(Vector2 position) : position(position) {
+Camera::Camera(Vector2 position) :
+		position(position) {
 }
 
 int Camera::getX() {
