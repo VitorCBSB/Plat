@@ -24,7 +24,7 @@ Vector2 Vector2::operator *(float scalar) {
 }
 
 float Vector2::operator *(Vector2 other) {
-	return this->x * other.x + this->y + other.y;
+	return this->x * other.x + this->y * other.y;
 }
 
 float Vector2::length() {
@@ -32,7 +32,8 @@ float Vector2::length() {
 }
 
 Vector2 Vector2::normalize() {
-	return Vector2(this->x / length(), this->y / length());
+	float vecLength = length();
+	return Vector2(this->x / vecLength, this->y / vecLength);
 }
 
 Vector2 Vector2::rotate(float angleInDegrees) {
