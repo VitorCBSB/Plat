@@ -24,6 +24,11 @@ public:
 
 	void clipTexture(SDL_Rect newClip);
 	void render(int x = 0, int y = 0);
+
+	int getHeight();
+	int getWidth();
+	int getHeightClipped();
+	int getWidthClipped();
 };
 
 #endif /* SPRITE_H_ */

@@ -44,3 +44,23 @@ void Sprite::render(int x, int y) {
 
 	SDLBase::renderTexture(texture, &clip, &dst);
 }
+
+int Sprite::getHeight() {
+	int height;
+	SDL_QueryTexture(texture, NULL, NULL, NULL, &height);
+	return height;
+}
+
+int Sprite::getWidth() {
+	int width;
+	SDL_QueryTexture(texture, NULL, NULL, &width, NULL);
+	return width;
+}
+
+int Sprite::getHeightClipped() {
+	return clip.h;
+}
+
+int Sprite::getWidthClipped() {
+	return clip.w;
+}
