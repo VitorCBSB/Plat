@@ -7,6 +7,8 @@
 
 #include "InputManager.h"
 
+InputManager* InputManager::instance = NULL;
+
 InputManager::InputManager() :
 		mouseState(0), keyStates(NULL), quitGame(false), mouseX(0), mouseY(0) {
 }

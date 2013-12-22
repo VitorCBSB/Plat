@@ -7,6 +7,8 @@
 
 #include "Camera.h"
 
+Camera* Camera::instance = NULL;
+
 Camera::Camera() :
 		position(Vector2(0, 0)) {
 }

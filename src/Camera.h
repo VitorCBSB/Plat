@@ -9,6 +9,7 @@
 #define CAMERA_H_
 
 #include "Vector2.h"
+#include <stdlib.h>
 
 class Camera {
 private:
