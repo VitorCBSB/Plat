@@ -10,7 +10,7 @@
 Camera* Camera::instance = NULL;
 
 Camera::Camera() :
-		position(Vector2(0, 0)), velocity(Vector2(0,0)) {
+		position(Vector2(0, 0)), velocity(Vector2(0, 0)) {
 }
 
 void Camera::update(double dt) {
