@@ -36,11 +36,9 @@ public:
 		STATEMENU
 	};
 
-	static int inicializaSDL();
+	static int initializeSDL();
 
-	static void finalizaSDL();
-
-	static SDL_Renderer* getScreenRenderer();
+	static void finalizeSDL();
 
 	static SDL_Texture* loadImage(std::string fileName);
 
@@ -54,9 +52,9 @@ public:
 
 //	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
 
-	static void limparTela();
+	static void clearScreen();
 
-	static void atualizarTela();
+	static void updateScreen();
 
 };
 

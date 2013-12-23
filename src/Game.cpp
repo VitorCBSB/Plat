@@ -8,11 +8,11 @@
 #include "Game.h"
 
 Game::Game() {
-	SDLBase::inicializaSDL();
+	SDLBase::initializeSDL();
 }
 
 Game::~Game() {
-	SDLBase::finalizaSDL();
+	SDLBase::finalizeSDL();
 }
 
 int Game::run() {
@@ -24,8 +24,8 @@ int Game::run() {
 		InputManager::get()->update();
 		testObj->update(1 / FPS);
 		testObj->render(0, 0);
-		SDLBase::atualizarTela();
-		SDLBase::limparTela();
+		SDLBase::updateScreen();
+		SDLBase::clearScreen();
 		SDL_Delay(1 / FPS);
 	}
 
