@@ -16,7 +16,7 @@
 #include <math.h>
 #include <tr1/memory>
 
-#define MAX_SPEED 50.0
+#define MAX_SPEED 10.0
 
 class TestObj: public GameObject {
 private:

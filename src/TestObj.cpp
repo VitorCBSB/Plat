@@ -19,22 +19,32 @@ TestObj::~TestObj() {
 void TestObj::update(double dt) {
 	acceleration = Vector2(0, 0);
 
-	if (InputManager::get()->isKeyHeld(SDLK_w)) {
-		acceleration = Vector2(0, -100);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_W)) {
+		acceleration = acceleration + Vector2(0, -10);
 	}
-	if (InputManager::get()->isKeyHeld(SDLK_a)) {
-		acceleration = Vector2(-100, 0);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_A)) {
+		acceleration = acceleration + Vector2(-10, 0);
 	}
-	if (InputManager::get()->isKeyHeld(SDLK_s)) {
-		acceleration = Vector2(0, 100);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_S)) {
+		acceleration = acceleration + Vector2(0, 10);
 	}
-	if (InputManager::get()->isKeyHeld(SDLK_d)) {
-		acceleration = Vector2(100, 0);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_D)) {
+		acceleration = acceleration + Vector2(10, 0);
 	}
 
 	velocity = velocity + (acceleration * dt);
-	velocity.x = fmin(MAX_SPEED, velocity.x);
-	velocity.y = fmin(MAX_SPEED, velocity.y);
+	if (velocity.x > MAX_SPEED) {
+		velocity.x = MAX_SPEED;
+	}
+	if (velocity.x < -MAX_SPEED) {
+		velocity.x = -MAX_SPEED;
+	}
+	if (velocity.y > MAX_SPEED) {
+		velocity.y = MAX_SPEED;
+	}
+	if (velocity.y < -MAX_SPEED) {
+		velocity.y = -MAX_SPEED;
+	}
 
 	position = position + velocity;
 }
