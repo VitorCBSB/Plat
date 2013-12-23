@@ -31,14 +31,14 @@ void Sprite::clipTexture(SDL_Rect newClip) {
 
 // Essa função tenta evitar o 'stretching'
 // Que o SDL_RenderCopy faz. :/
-void Sprite::render(int x, int y) {
+void Sprite::render(int x, int y, bool center) {
 	SDL_Rect dst;
 	int textureW, textureH;
 
 	SDL_QueryTexture(texture, NULL, NULL, &textureW, &textureH);
 
-	dst.x = x;
-	dst.y = y;
+	dst.x = center ? x - (std::min(clip.w, textureW) / 2) : x;
+	dst.y = center ? y - (std::min(clip.h, textureH) / 2) : y;
 	dst.w = std::min(clip.w, textureW);
 	dst.h = std::min(clip.h, textureH);
 

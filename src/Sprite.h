@@ -24,7 +24,7 @@ public:
 	virtual ~Sprite();
 
 	void clipTexture(SDL_Rect newClip);
-	void render(int x = 0, int y = 0);
+	void render(int x = 0, int y = 0, bool center = true);
 
 	int getHeight();
 	int getWidth();
