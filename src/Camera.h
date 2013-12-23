@@ -14,6 +14,7 @@
 class Camera {
 private:
 	Vector2 position;
+	Vector2 velocity;
 	static Camera* instance;
 	Camera();
 
@@ -24,10 +25,12 @@ public:
 		}
 		return new Camera();
 	}
+	void update(double dt);
 	int getX();
 	void setX(int x);
 	int getY();
 	void setY(int y);
+	void setVelocity(Vector2 velocity);
 };
 
 #endif /* CAMERA_H_ */

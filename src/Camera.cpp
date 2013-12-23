@@ -10,7 +10,11 @@
 Camera* Camera::instance = NULL;
 
 Camera::Camera() :
-		position(Vector2(0, 0)) {
+		position(Vector2(0, 0)), velocity(Vector2(0,0)) {
+}
+
+void Camera::update(double dt) {
+	position = position + (velocity * dt);
 }
 
 int Camera::getX() {
@@ -27,4 +31,8 @@ void Camera::setX(int x) {
 
 void Camera::setY(int y) {
 	position.y = y;
+}
+
+void Camera::setVelocity(Vector2 velocity) {
+	this->velocity = velocity;
 }
