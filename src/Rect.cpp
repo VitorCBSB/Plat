@@ -7,8 +7,8 @@
 
 #include "Rect.h"
 
-Rect::Rect(float x, float y, float w, float h) :
-		x(x), y(y), w(w), h(h) {
+Rect::Rect(Vector2 position, float w, float h) :
+		position(position), w(w), h(h) {
 }
 
 float Rect::area() {

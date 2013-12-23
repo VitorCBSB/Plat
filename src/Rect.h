@@ -8,12 +8,14 @@
 #ifndef RECT_H_
 #define RECT_H_
 
+#include "Vector2.h"
+
 class Rect {
 public:
-	float x, y;
+	Vector2 position;
 	float w, h;
 
-	Rect(float x, float y, float w, float h);
+	Rect(Vector2 position, float w, float h);
 
 	float area();
 };
