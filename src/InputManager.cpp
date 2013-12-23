@@ -18,13 +18,13 @@ InputManager::~InputManager() {
 
 void InputManager::initKeyboard() {
 	for (int i = 0; i < SDL_NUM_SCANCODES; i++) {
-		keyDown[i] = keyUp[i] = 0;
+		keyDown[i] = keyUp[i] = false;
 	}
 }
 
 void InputManager::initMouse() {
 	for (int i = 0; i < N_MOUSE_BUTTONS; i++) {
-		mouseDown[i] = mouseUp[i] = 0;
+		mouseDown[i] = mouseUp[i] = false;
 	}
 }
 
@@ -40,10 +40,10 @@ void InputManager::update() {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
-			keyDown[event.key.keysym.sym] = true;
+			keyDown[event.key.keysym.scancode] = true;
 			break;
 		case SDL_KEYUP:
-			keyUp[event.key.keysym.sym] = true;
+			keyUp[event.key.keysym.scancode] = true;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			mouseDown[event.button.button] = true;
