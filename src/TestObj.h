@@ -11,6 +11,7 @@
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Vector2.h"
+#include "Rect.h"
 #include "InputManager.h"
 #include "SDLBase.h"
 #include <math.h>
@@ -21,7 +22,7 @@
 class TestObj: public GameObject {
 private:
 	SpritePtr sprite;
-	Vector2 position;
+	Rect rect;
 	Vector2 acceleration;
 	Vector2 velocity;
 

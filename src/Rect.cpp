@@ -14,3 +14,4 @@ Rect::Rect(Vector2 position, float w, float h) :
 float Rect::area() {
 	return w * h;
 }
+

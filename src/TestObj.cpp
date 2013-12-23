@@ -8,7 +8,7 @@
 #include "TestObj.h"
 
 TestObj::TestObj(SpritePtr sprite, Vector2 position) :
-		GameObject(), sprite(sprite), position(position), acceleration(
+		GameObject(), sprite(sprite), rect(position, 0, 0), acceleration(
 				Vector2(0, 0)), velocity(Vector2(0, 0)) {
 
 }
@@ -46,9 +46,9 @@ void TestObj::update(double dt) {
 		velocity.y = -MAX_SPEED;
 	}
 
-	position = position + velocity;
+	rect.position = rect.position + velocity;
 }
 
 void TestObj::render(float cameraX, float cameraY) {
-	sprite->render(position.x - cameraX, position.y - cameraY);
+	sprite->render(rect.position.x - cameraX, rect.position.y - cameraY);
 }
