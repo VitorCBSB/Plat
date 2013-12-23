@@ -20,7 +20,7 @@ int Game::run() {
 			new TestObj(SpritePtr(new Sprite("../img/wow.png")),
 					Vector2(400, 300)));
 
-	while (!SDL_QuitRequested()) {
+	while (!InputManager::get()->QuitGame()) {
 		InputManager::get()->update();
 		testObj->update(1 / FPS);
 		testObj->render(0, 0);
