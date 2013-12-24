@@ -7,12 +7,12 @@
 
 #include "TileSet.h"
 
-TileSet::TileSet() {
-	// TODO Auto-generated constructor stub
-
+TileSet::TileSet(std::string fileName, int tileWidth, int tileHeight) :
+		tileWidth(tileWidth), tileHeight(tileHeight) {
+	tiles = SDLBase::loadImage(fileName);
 }
 
 TileSet::~TileSet() {
-	// TODO Auto-generated destructor stub
+	SDL_DestroyTexture(tiles);
 }
 

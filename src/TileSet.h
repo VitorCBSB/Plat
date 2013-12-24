@@ -8,9 +8,17 @@
 #ifndef TILESET_H_
 #define TILESET_H_
 
+#include "SDLBase.h"
+#include <string>
+
 class TileSet {
+private:
+	SDL_Texture* tiles;
+	int tileWidth;
+	int tileHeight;
+
 public:
-	TileSet();
+	TileSet(std::string fileName, int tileWidth, int tileHeight);
 	virtual ~TileSet();
 };
 
