@@ -20,33 +20,22 @@ void TestObj::update(double dt) {
 	acceleration = Vector2(0, 0);
 
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_W)) {
-		acceleration = acceleration + Vector2(0, -10);
+		acceleration = acceleration + Vector2(0, -ACCELERATION);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_A)) {
-		acceleration = acceleration + Vector2(-10, 0);
+		acceleration = acceleration + Vector2(-ACCELERATION, 0);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_S)) {
-		acceleration = acceleration + Vector2(0, 10);
+		acceleration = acceleration + Vector2(0, ACCELERATION);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_D)) {
-		acceleration = acceleration + Vector2(10, 0);
+		acceleration = acceleration + Vector2(ACCELERATION, 0);
 	}
 
 	velocity = velocity + (acceleration * dt);
-	if (velocity.x > MAX_SPEED) {
-		velocity.x = MAX_SPEED;
-	}
-	if (velocity.x < -MAX_SPEED) {
-		velocity.x = -MAX_SPEED;
-	}
-	if (velocity.y > MAX_SPEED) {
-		velocity.y = MAX_SPEED;
-	}
-	if (velocity.y < -MAX_SPEED) {
-		velocity.y = -MAX_SPEED;
-	}
+	rect.position = rect.position + (velocity * dt);
 
-	rect.position = rect.position + velocity;
+	velocity = velocity * (1.0 - std::min(FRICTION * dt, 1.0));
 }
 
 void TestObj::render(float cameraX, float cameraY) {
