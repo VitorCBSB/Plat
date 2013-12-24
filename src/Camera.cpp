@@ -7,32 +7,32 @@
 
 #include "Camera.h"
 
-Camera* Camera::instance = NULL;
-
 Camera::Camera() :
 		position(Vector2(0, 0)), velocity(Vector2(0, 0)) {
 }
 
 void Camera::update(double dt) {
+	velocity = Vector2(0,0);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_LEFT)) {
+		velocity = velocity + Vector2(-SPEED, 0);
+	}
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_DOWN)) {
+		velocity = velocity + Vector2(0,SPEED);
+	}
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_RIGHT)) {
+		velocity = velocity + Vector2(SPEED,0);
+	}
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_UP)) {
+		velocity = velocity + Vector2(0,-SPEED);
+	}
 	position = position + (velocity * dt);
+	printf("%f %f\n", position.x, position.y);
 }
 
-int Camera::getX() {
+float Camera::getX() {
 	return position.x;
 }
 
-int Camera::getY() {
+float Camera::getY() {
 	return position.y;
-}
-
-void Camera::setX(int x) {
-	position.x = x;
-}
-
-void Camera::setY(int y) {
-	position.y = y;
-}
-
-void Camera::setVelocity(Vector2 velocity) {
-	this->velocity = velocity;
 }

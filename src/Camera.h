@@ -9,28 +9,25 @@
 #define CAMERA_H_
 
 #include "Vector2.h"
+#include "InputManager.h"
+#include "SDLBase.h"
 #include <stdlib.h>
+#include <tr1/memory>
+
+#define SPEED 50
 
 class Camera {
 private:
 	Vector2 position;
 	Vector2 velocity;
-	static Camera* instance;
-	Camera();
 
 public:
-	Camera* get() {
-		if (instance) {
-			return instance;
-		}
-		return new Camera();
-	}
+	Camera();
 	void update(double dt);
-	int getX();
-	void setX(int x);
-	int getY();
-	void setY(int y);
-	void setVelocity(Vector2 velocity);
+	float getX();
+	float getY();
 };
+
+typedef std::tr1::shared_ptr<Camera> CameraPtr;
 
 #endif /* CAMERA_H_ */
