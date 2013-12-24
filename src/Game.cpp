@@ -19,14 +19,19 @@ int Game::run() {
 	TestObjPtr testObj(
 			new TestObj(SpritePtr(new Sprite("../img/wow.png")),
 					Vector2(400, 300)));
+	double dt = 1.0 / FPS;
+	CameraPtr camera(new Camera());
 
 	while (!InputManager::get()->QuitGame()) {
 		InputManager::get()->update();
-		testObj->update(1.0 / FPS);
-		testObj->render(0, 0);
+
+		camera->update(dt);
+		testObj->update(dt);
+		testObj->render(camera->getX(), camera->getY());
 		SDLBase::updateScreen();
 		SDLBase::clearScreen();
 		SDL_Delay(1 / FPS);
+
 	}
 
 	return 0;

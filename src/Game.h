@@ -14,6 +14,7 @@
 #include "Sprite.h"
 #include "TestObj.h"
 #include "InputManager.h"
+#include "Camera.h"
 #include <string>
 
 class Game {
