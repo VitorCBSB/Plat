@@ -17,6 +17,7 @@ public:
 	virtual ~Vector2();
 
 	Vector2 operator+(Vector2 other);
+	Vector2 operator-(Vector2 other);
 	Vector2 operator*(float scalar);
 	float operator*(Vector2 other);
 	float length();
