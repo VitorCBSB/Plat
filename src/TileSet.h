@@ -16,10 +16,14 @@ private:
 	SpritePtr tiles;
 	int tileWidth;
 	int tileHeight;
+	int lines;
+	int columns;
 
 public:
 	TileSet(std::string fileName, int tileWidth, int tileHeight);
 	virtual ~TileSet();
+
+	void render(int index, int posX, int posY);
 };
 
 #endif /* TILESET_H_ */
