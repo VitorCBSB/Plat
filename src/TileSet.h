@@ -8,12 +8,12 @@
 #ifndef TILESET_H_
 #define TILESET_H_
 
-#include "SDLBase.h"
+#include "Sprite.h"
 #include <string>
 
 class TileSet {
 private:
-	SDL_Texture* tiles;
+	SpritePtr tiles;
 	int tileWidth;
 	int tileHeight;
 

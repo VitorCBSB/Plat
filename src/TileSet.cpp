@@ -8,11 +8,10 @@
 #include "TileSet.h"
 
 TileSet::TileSet(std::string fileName, int tileWidth, int tileHeight) :
-		tileWidth(tileWidth), tileHeight(tileHeight) {
-	tiles = SDLBase::loadImage(fileName);
+		tiles(SpritePtr(new Sprite(fileName))), tileWidth(tileWidth), tileHeight(
+				tileHeight) {
 }
 
 TileSet::~TileSet() {
-	SDL_DestroyTexture(tiles);
 }
 
