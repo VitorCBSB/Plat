@@ -19,7 +19,7 @@
 
 #define MAX_SPEED 500.0
 #define ACCELERATION 1000.0
-#define FRICTION 5
+#define FRICTION 3.5
 
 class TestObj: public GameObject {
 private:
