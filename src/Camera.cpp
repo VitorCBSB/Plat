@@ -12,18 +12,18 @@ Camera::Camera() :
 }
 
 void Camera::update(double dt) {
-	velocity = Vector2(0,0);
+	velocity = Vector2(0, 0);
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_LEFT)) {
 		velocity = velocity + Vector2(-SPEED, 0);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_DOWN)) {
-		velocity = velocity + Vector2(0,SPEED);
+		velocity = velocity + Vector2(0, SPEED);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_RIGHT)) {
-		velocity = velocity + Vector2(SPEED,0);
+		velocity = velocity + Vector2(SPEED, 0);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_UP)) {
-		velocity = velocity + Vector2(0,-SPEED);
+		velocity = velocity + Vector2(0, -SPEED);
 	}
 	position = position + (velocity * dt);
 	printf("%f %f\n", position.x, position.y);
