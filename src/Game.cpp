@@ -22,7 +22,7 @@ int Game::run() {
 
 	while (!InputManager::get()->QuitGame()) {
 		InputManager::get()->update();
-		testObj->update(1 / FPS);
+		testObj->update(1.0 / FPS);
 		testObj->render(0, 0);
 		SDLBase::updateScreen();
 		SDLBase::clearScreen();
