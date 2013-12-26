@@ -18,7 +18,7 @@ Game::~Game() {
 int Game::run() {
 	TestObjPtr testObj(
 			new TestObj(SpritePtr(new Sprite("../img/wow.png")),
-					Vector2(400, 300)));
+					Rect(Vector2(400, 300), 64, 64)));
 	TileMapPtr tileMap(
 			new TileMap(std::string("../maps/testMap.map"),
 					std::string("../tiles/Tileset.png"), TILE_WIDTH,
