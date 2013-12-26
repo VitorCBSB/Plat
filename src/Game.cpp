@@ -19,6 +19,10 @@ int Game::run() {
 	TestObjPtr testObj(
 			new TestObj(SpritePtr(new Sprite("../img/wow.png")),
 					Vector2(400, 300)));
+	TileMapPtr tileMap(
+			new TileMap(std::string("../maps/testMap.map"),
+					std::string("../tiles/Tileset.png"), TILE_WIDTH,
+					TILE_HEIGHT));
 	double dt = 1.0 / FPS;
 	CameraPtr camera(new Camera());
 

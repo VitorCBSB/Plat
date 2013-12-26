@@ -9,12 +9,15 @@
 #define GAME_H_
 
 #define FPS 60.0
+#define TILE_WIDTH 75
+#define TILE_HEIGHT 75
 
 #include "SDLBase.h"
 #include "Sprite.h"
 #include "TestObj.h"
 #include "InputManager.h"
 #include "Camera.h"
+#include "TileMap.h"
 #include <string>
 
 class Game {
