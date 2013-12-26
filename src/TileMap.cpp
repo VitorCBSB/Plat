@@ -21,6 +21,7 @@ TileMap::~TileMap() {
 
 void TileMap::load(std::string fileName) {
 	FILE* fp;
+	int tileIndex;
 
 	if ((fp = fopen(fileName.c_str(), "r")) == NULL) {
 		fprintf(stderr, "TileMap: arquivo %s nao pode ser aberto.",
@@ -31,7 +32,14 @@ void TileMap::load(std::string fileName) {
 	for (int k = 0; k < LAYERS; k++) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
-				fscanf(fp, "%d", &tileMatrix[k][i][j]);
+				fscanf(fp, "%d", &tileIndex);
+				if (k == LAYERS - 1) { // Se for a camada mais proxima da tela
+					tileMatrix[k][i][j] = TilePtr(
+							new TileSolid(
+									Rect(Vector2(j * tileWidth, i * tileHeight),
+											tileWidth, tileHeight), tileSet,
+									tileIndex));
+				}
 			}
 		}
 	}
@@ -40,16 +48,10 @@ void TileMap::load(std::string fileName) {
 }
 
 void TileMap::render(float cameraX, float cameraY) {
-	Vector2 actualPosition(position.x - cameraX, position.y - cameraY);
-
 	for (int k = 0; k < LAYERS; k++) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
-				if (tileMatrix[k][i][j] != -1) {
-					tileSet->render(tileMatrix[k][i][j],
-							(j * tileWidth) + actualPosition.x,
-							(i * tileHeight) + actualPosition.y);
-				}
+				tileMatrix[k][i][j]->render(cameraX, cameraY);
 			}
 		}
 	}

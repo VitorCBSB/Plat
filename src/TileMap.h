@@ -9,6 +9,8 @@
 #define TILEMAP_H_
 
 #include "TileSet.h"
+#include "Tile.h"
+#include "TileSolid.h"
 #include "Vector2.h"
 #include <string>
 #include <stdio.h>
@@ -24,7 +26,7 @@ private:
 	int tileWidth;
 	int tileHeight;
 	Vector2 position;
-	int tileMatrix[LAYERS][LINES][COLUMNS];
+	TilePtr tileMatrix[LAYERS][LINES][COLUMNS];
 
 	void load(std::string fileName);
 
