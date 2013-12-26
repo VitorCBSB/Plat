@@ -33,9 +33,16 @@ void TileMap::load(std::string fileName) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
 				fscanf(fp, "%d", &tileIndex);
-				if (k == LAYERS - 1) { // Se for a camada mais proxima da tela
+				// Se for a camada mais proxima da tela, entao cria tiles solidos
+				if (k == LAYERS - 1) {
 					tileMatrix[k][i][j] = TilePtr(
 							new TileSolid(
+									Rect(Vector2(j * tileWidth, i * tileHeight),
+											tileWidth, tileHeight), tileSet,
+									tileIndex));
+				} else { // Senao, o tile deve ser atravessavel
+					tileMatrix[k][i][j] = TilePtr(
+							new TilePassable(
 									Rect(Vector2(j * tileWidth, i * tileHeight),
 											tileWidth, tileHeight), tileSet,
 									tileIndex));

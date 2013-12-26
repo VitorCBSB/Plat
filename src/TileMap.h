@@ -11,6 +11,7 @@
 #include "TileSet.h"
 #include "Tile.h"
 #include "TileSolid.h"
+#include "TilePassable.h"
 #include "Vector2.h"
 #include <string>
 #include <stdio.h>
