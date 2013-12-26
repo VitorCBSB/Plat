@@ -37,6 +37,12 @@ public:
 	Rect getHitbox() {
 		return rect;
 	}
+	void setPosition(Vector2 position) {
+		rect.position = position;
+	}
+	Vector2 getPosition() {
+		return rect.position;
+	}
 };
 
 typedef std::tr1::shared_ptr<TestObj> TestObjPtr;
