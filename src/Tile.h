@@ -15,7 +15,7 @@
 #include <tr1/memory>
 
 class Tile {
-private:
+protected:
 	Rect hitBox;
 	TileSetPtr tileSet;
 	int tileIndex;
