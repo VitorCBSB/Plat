@@ -20,6 +20,8 @@ bool Tile::collidesWith(TestObjPtr player) {
 }
 
 void Tile::render(float cameraX, float cameraY) {
-	tileSet->render(tileIndex, hitBox.position.x - cameraX,
-			hitBox.position.y - cameraY);
+	if (tileIndex != -1) {
+		tileSet->render(tileIndex, hitBox.position.x - cameraX,
+				hitBox.position.y - cameraY);
+	}
 }

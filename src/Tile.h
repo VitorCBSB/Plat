@@ -26,7 +26,7 @@ public:
 
 	virtual bool collidesWith(TestObjPtr player);
 	virtual void onCollision(TestObjPtr player) = 0;
-	virtual void render(float cameraX, float cameraY) = 0;
+	void render(float cameraX, float cameraY);
 };
 
 typedef std::tr1::shared_ptr<Tile> TilePtr;
