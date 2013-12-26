@@ -7,8 +7,8 @@
 
 #include "TestObj.h"
 
-TestObj::TestObj(SpritePtr sprite, Vector2 position) :
-		GameObject(), sprite(sprite), rect(position, 0, 0), acceleration(
+TestObj::TestObj(SpritePtr sprite, Rect rect) :
+		GameObject(), sprite(sprite), rect(rect), acceleration(
 				Vector2(0, 0)), velocity(Vector2(0, 0)) {
 
 }
@@ -32,7 +32,7 @@ void TestObj::update(double dt) {
 		acceleration = acceleration + Vector2(ACCELERATION, 0);
 	}
 
-	Vector2 gravity = Vector2(0, 1000);
+	Vector2 gravity = Vector2(0, ACCELERATION);
 	Vector2 totalForce = gravity + acceleration;
 
 	velocity = velocity + (totalForce * dt);

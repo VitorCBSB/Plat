@@ -29,7 +29,7 @@ private:
 	Vector2 velocity;
 
 public:
-	TestObj(SpritePtr sprite, Vector2 position);
+	TestObj(SpritePtr sprite, Rect rect);
 	virtual ~TestObj();
 
 	void update(double dt);
