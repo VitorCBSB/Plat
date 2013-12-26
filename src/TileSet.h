@@ -9,6 +9,7 @@
 #define TILESET_H_
 
 #include "Sprite.h"
+#include <tr1/memory>
 #include <string>
 
 class TileSet {
@@ -25,5 +26,7 @@ public:
 
 	void render(int index, int posX, int posY);
 };
+
+typedef std::tr1::shared_ptr<TileSet> TileSetPtr;
 
 #endif /* TILESET_H_ */
