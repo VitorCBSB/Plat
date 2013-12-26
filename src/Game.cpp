@@ -31,6 +31,7 @@ int Game::run() {
 
 		camera->update(dt);
 		testObj->update(dt);
+		tileMap->render(camera->getX(), camera->getY());
 		testObj->render(camera->getX(), camera->getY());
 		SDLBase::updateScreen();
 		SDLBase::clearScreen();
