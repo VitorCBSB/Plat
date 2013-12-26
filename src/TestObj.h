@@ -34,6 +34,9 @@ public:
 
 	void update(double dt);
 	void render(float cameraX = 0, float cameraY = 0);
+	Rect getHitbox() {
+		return rect;
+	}
 };
 
 typedef std::tr1::shared_ptr<TestObj> TestObjPtr;
