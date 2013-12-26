@@ -26,7 +26,6 @@ void Camera::update(double dt) {
 		velocity = velocity + Vector2(0, -SPEED);
 	}
 	position = position + (velocity * dt);
-	printf("%f %f\n", position.x, position.y);
 }
 
 float Camera::getX() {
