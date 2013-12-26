@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <tr1/memory>
 
-#define SPEED 50
+#define SPEED 500
 
 class Camera {
 private:
