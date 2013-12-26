@@ -34,7 +34,7 @@ void TileMap::load(std::string fileName) {
 			for (int j = 0; j < COLUMNS; j++) {
 				fscanf(fp, "%d", &tileIndex);
 				// Se for a camada mais proxima da tela, entao cria tiles solidos
-				if (k == LAYERS - 1) {
+				if (tileIndex != -1 && k == LAYERS - 1) {
 					tileMatrix[k][i][j] = TilePtr(
 							new TileSolid(
 									Rect(Vector2(j * tileWidth, i * tileHeight),
