@@ -17,8 +17,8 @@ TileSolid::~TileSolid() {
 
 float TileSolid::xOverlap(TestObjPtr player) {
 	if (player->getHitbox().position.x < this->hitBox.position.x) {
-		return player->getHitbox().position.x + (player->getHitbox().w / 2)
-				- (this->hitBox.position.x - (this->hitBox.w / 2));
+		return this->hitBox.position.x - (this->hitBox.w / 2)
+				- (player->getHitbox().position.x + (player->getHitbox().w / 2));
 	}
 	return this->hitBox.position.x + (this->hitBox.w / 2)
 			- (player->getHitbox().position.x - (player->getHitbox().w / 2));
@@ -26,8 +26,8 @@ float TileSolid::xOverlap(TestObjPtr player) {
 
 float TileSolid::yOverlap(TestObjPtr player) {
 	if (player->getHitbox().position.y < this->hitBox.position.y) {
-	return player->getHitbox().position.y + (player->getHitbox().h / 2)
-			- (this->hitBox.position.y - (this->hitBox.h / 2));
+		return this->hitBox.position.y - (this->hitBox.h / 2)
+				- (player->getHitbox().position.y + (player->getHitbox().h / 2));
 	}
 	return this->hitBox.position.y + (this->hitBox.h / 2)
 			- (player->getHitbox().position.y - (player->getHitbox().h / 2));
