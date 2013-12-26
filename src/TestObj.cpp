@@ -32,7 +32,10 @@ void TestObj::update(double dt) {
 		acceleration = acceleration + Vector2(ACCELERATION, 0);
 	}
 
-	velocity = velocity + (acceleration * dt);
+	Vector2 gravity = Vector2(0, 1000);
+	Vector2 totalForce = gravity + acceleration;
+
+	velocity = velocity + (totalForce * dt);
 	rect.position = rect.position + (velocity * dt);
 
 	velocity = velocity * (1.0 - std::min(FRICTION * dt, 1.0));
