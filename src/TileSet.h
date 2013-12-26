@@ -25,6 +25,12 @@ public:
 	virtual ~TileSet();
 
 	void render(int index, int posX, int posY);
+	int getTileWidth() {
+		return tileWidth;
+	}
+	int getTileHeight() {
+		return tileHeight;
+	}
 };
 
 typedef std::tr1::shared_ptr<TileSet> TileSetPtr;
