@@ -11,8 +11,13 @@
 #include "Tile.h"
 #include "Rect.h"
 #include <tr1/memory>
+#include <math.h>
 
 class TileSolid: public Tile {
+private:
+	float xOverlap(TestObjPtr player);
+	float yOverlap(TestObjPtr player);
+
 public:
 	TileSolid(Rect hitBox, TileSetPtr tileSet, int tileIndex);
 	virtual ~TileSolid();
