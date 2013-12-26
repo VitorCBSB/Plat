@@ -64,6 +64,18 @@ void TileMap::render(float cameraX, float cameraY) {
 	}
 }
 
+void TileMap::checkCollision(TestObjPtr player) {
+	for (int k = 0; k < LAYERS; k++) {
+		for (int i = 0; i < LINES; i++) {
+			for (int j = 0; j < COLUMNS; j++) {
+				if (tileMatrix[k][i][j]->collidesWith(player)) {
+					tileMatrix[k][i][j]->onCollision(player);
+				}
+			}
+		}
+	}
+}
+
 void TileMap::setPosition(Vector2 newPosition) {
 	this->position = newPosition;
 }

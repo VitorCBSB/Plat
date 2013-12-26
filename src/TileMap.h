@@ -38,6 +38,7 @@ public:
 
 	void render(float cameraX, float cameraY);
 	void setPosition(Vector2 newPosition);
+	void checkCollision(TestObjPtr player);
 };
 
 typedef std::tr1::shared_ptr<TileMap> TileMapPtr;
