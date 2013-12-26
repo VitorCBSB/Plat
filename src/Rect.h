@@ -18,6 +18,7 @@ public:
 	Rect(Vector2 position, float w, float h);
 
 	float area();
+	bool collidesWith(Rect other);
 };
 
 #endif /* RECT_H_ */
