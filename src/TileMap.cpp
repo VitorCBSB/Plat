@@ -23,7 +23,8 @@ void TileMap::load(std::string fileName) {
 	FILE* fp;
 
 	if ((fp = fopen(fileName.c_str(), "r")) == NULL) {
-		fprintf(stderr, "TileMap: arquivo %s nao pode ser aberto.", fileName.c_str());
+		fprintf(stderr, "TileMap: arquivo %s nao pode ser aberto.",
+				fileName.c_str());
 		exit(1);
 	}
 
@@ -44,9 +45,11 @@ void TileMap::render(float cameraX, float cameraY) {
 	for (int k = 0; k < LAYERS; k++) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
-				tileSet->render(tileMatrix[k][i][j],
-						(j * tileWidth) + actualPosition.x,
-						(i * tileHeight) + actualPosition.y);
+				if (tileMatrix[k][i][j] != -1) {
+					tileSet->render(tileMatrix[k][i][j],
+							(j * tileWidth) + actualPosition.x,
+							(i * tileHeight) + actualPosition.y);
+				}
 			}
 		}
 	}

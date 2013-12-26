@@ -12,10 +12,11 @@
 #include "Vector2.h"
 #include <string>
 #include <stdio.h>
+#include <tr1/memory>
 
-#define LINES 20
-#define COLUMNS 100
-#define LAYERS 3
+#define LINES 10
+#define COLUMNS 10
+#define LAYERS 1
 
 class TileMap {
 private:
@@ -35,5 +36,7 @@ public:
 	void render(float cameraX, float cameraY);
 	void setPosition(Vector2 newPosition);
 };
+
+typedef std::tr1::shared_ptr<TileMap> TileMapPtr;
 
 #endif /* TILEMAP_H_ */
