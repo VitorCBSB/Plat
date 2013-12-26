@@ -8,8 +8,8 @@
 #include "TestObj.h"
 
 TestObj::TestObj(SpritePtr sprite, Rect rect) :
-		GameObject(), sprite(sprite), rect(rect), acceleration(
-				Vector2(0, 0)), velocity(Vector2(0, 0)) {
+		GameObject(), sprite(sprite), rect(rect), acceleration(Vector2(0, 0)), velocity(
+				Vector2(0, 0)) {
 
 }
 
