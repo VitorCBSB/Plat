@@ -31,8 +31,11 @@ void TestObj::update(double dt) {
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_D)) {
 		acceleration = acceleration + Vector2(ACCELERATION, 0);
 	}
+	if (InputManager::get()->isKeyDown(SDL_SCANCODE_SPACE)) {
+		acceleration = acceleration + Vector2(0, -JUMP);
+	}
 
-	Vector2 gravity = Vector2(0, 0);
+	Vector2 gravity = Vector2(0, ACCELERATION);
 	Vector2 totalForce = gravity + acceleration;
 
 	velocity = velocity + (totalForce * dt);
