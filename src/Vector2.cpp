@@ -19,12 +19,27 @@ Vector2 Vector2::operator +(Vector2 other) {
 	return Vector2(this->x + other.x, this->y + other.y);
 }
 
+void Vector2::operator +=(Vector2 other) {
+	this->x = this->x + other.x;
+	this->y = this->y + other.y;
+}
+
 Vector2 Vector2::operator -(Vector2 other) {
 	return Vector2(this->x - other.x, this->y - other.y);
 }
 
+void Vector2::operator -=(Vector2 other) {
+	this->x = this->x - other.x;
+	this->y = this->y - other.y;
+}
+
 Vector2 Vector2::operator *(float scalar) {
 	return Vector2(this->x * scalar, this->y * scalar);
+}
+
+void Vector2::operator *=(float scalar) {
+	this->x = this->x * scalar;
+	this->y = this->y * scalar;
 }
 
 float Vector2::operator *(Vector2 other) {

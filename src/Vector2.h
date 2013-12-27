@@ -17,8 +17,11 @@ public:
 	virtual ~Vector2();
 
 	Vector2 operator+(Vector2 other);
+	void operator+=(Vector2 other);
 	Vector2 operator-(Vector2 other);
+	void operator-=(Vector2 other);
 	Vector2 operator*(float scalar);
+	void operator*=(float scalar);
 	float operator*(Vector2 other);
 	float length();
 	Vector2 normalize();
