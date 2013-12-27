@@ -18,16 +18,15 @@ private:
 
 	Uint32 mouseState;
 	Uint8* keyStates;
+	Uint8 oldKeyStates[SDL_NUM_SCANCODES];
 	bool quitGame;
 	int mouseX;
 	int mouseY;
 
-	bool keyDown[SDL_NUM_SCANCODES];
-	bool keyUp[SDL_NUM_SCANCODES];
+	int keyDownUp[SDL_NUM_SCANCODES];
 	bool mouseDown[N_MOUSE_BUTTONS];
 	bool mouseUp[N_MOUSE_BUTTONS];
 
-	void initKeyboard();
 	void initMouse();
 
 	InputManager();

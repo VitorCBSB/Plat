@@ -11,15 +11,10 @@ InputManager* InputManager::instance = NULL;
 
 InputManager::InputManager() :
 		mouseState(0), keyStates(NULL), quitGame(false), mouseX(0), mouseY(0) {
+	initMouse();
 }
 
 InputManager::~InputManager() {
-}
-
-void InputManager::initKeyboard() {
-	for (int i = 0; i < SDL_NUM_SCANCODES; i++) {
-		keyDown[i] = keyUp[i] = false;
-	}
 }
 
 void InputManager::initMouse() {
@@ -31,20 +26,21 @@ void InputManager::initMouse() {
 void InputManager::update() {
 	SDL_Event event;
 
+	if (keyStates) {
+		memcpy(oldKeyStates, keyStates, sizeof(Uint8));
+	}
 	keyStates = (Uint8*) SDL_GetKeyboardState(NULL);
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY);
 
-	initKeyboard();
 	initMouse();
+
+	// TODO nao funciona, ver depois.
+	for (int i = 0; i < SDL_NUM_SCANCODES; i++) {
+		keyDownUp[i] = keyStates[i] - oldKeyStates[i];
+	}
 
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-		case SDL_KEYDOWN:
-			keyDown[event.key.keysym.scancode] = true;
-			break;
-		case SDL_KEYUP:
-			keyUp[event.key.keysym.scancode] = true;
-			break;
 		case SDL_MOUSEBUTTONDOWN:
 			mouseDown[event.button.button] = true;
 			break;
@@ -61,11 +57,11 @@ void InputManager::update() {
 }
 
 bool InputManager::isKeyDown(int key) {
-	return keyDown[key];
+	return keyDownUp[key] > 0;
 }
 
 bool InputManager::isKeyUp(int key) {
-	return keyUp[key];
+	return keyDownUp[key] < 0;
 }
 
 bool InputManager::isKeyHeld(int key) {
