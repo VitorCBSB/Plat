@@ -14,6 +14,7 @@
 #include "Rect.h"
 #include "InputManager.h"
 #include "SDLBase.h"
+#include "Timer.h"
 #include <math.h>
 #include <tr1/memory>
 
@@ -28,6 +29,7 @@ private:
 	Rect rect;
 	Vector2 acceleration;
 	Vector2 velocity;
+	Timer jumpTimer;
 
 public:
 	TestObj(SpritePtr sprite, Rect rect);

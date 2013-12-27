@@ -10,7 +10,7 @@
 TestObj::TestObj(SpritePtr sprite, Rect rect) :
 		GameObject(), sprite(sprite), rect(rect), acceleration(Vector2(0, 0)), velocity(
 				Vector2(0, 0)) {
-
+	jumpTimer.start(0);
 }
 
 TestObj::~TestObj() {
@@ -18,6 +18,7 @@ TestObj::~TestObj() {
 
 void TestObj::update(double dt) {
 	acceleration = Vector2(0, 0);
+	jumpTimer.update();
 
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_W)) {
 		acceleration = acceleration + Vector2(0, -ACCELERATION);
@@ -31,8 +32,10 @@ void TestObj::update(double dt) {
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_D)) {
 		acceleration = acceleration + Vector2(ACCELERATION, 0);
 	}
-	if (InputManager::get()->isKeyDown(SDL_SCANCODE_SPACE)) {
+	if (InputManager::get()->isKeyDown(SDL_SCANCODE_SPACE)
+			&& jumpTimer.isDone()) {
 		acceleration = acceleration + Vector2(0, -JUMP);
+		jumpTimer.start(2000);
 	}
 
 	Vector2 gravity = Vector2(0, ACCELERATION);
