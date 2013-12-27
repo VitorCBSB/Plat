@@ -31,11 +31,11 @@ void InputManager::initMouse() {
 void InputManager::update() {
 	SDL_Event event;
 
-	initKeyboard();
-	initMouse();
-
 	keyStates = (Uint8*) SDL_GetKeyboardState(NULL);
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY);
+
+	initKeyboard();
+	initMouse();
 
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
