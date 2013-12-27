@@ -14,7 +14,6 @@
 #include "Rect.h"
 #include "InputManager.h"
 #include "SDLBase.h"
-#include "Timer.h"
 #include <math.h>
 #include <tr1/memory>
 
@@ -26,12 +25,12 @@
 class TestObj: public GameObject {
 private:
 	SpritePtr sprite;
+
+public:
 	Rect rect;
 	Vector2 acceleration;
 	Vector2 velocity;
-	Timer jumpTimer;
 
-public:
 	TestObj(SpritePtr sprite, Rect rect);
 	virtual ~TestObj();
 
