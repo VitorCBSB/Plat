@@ -37,6 +37,10 @@ float TileSolid::yOverlap(TestObjPtr player) {
 void TileSolid::onCollision(TestObjPtr player) {
 	Vector2 overlap(xOverlap(player), yOverlap(player));
 
-	fabs(overlap.y) > fabs(overlap.x) ? overlap.y = 0 : overlap.x = 0;
-	player->setPosition(player->getPosition() + overlap);
+	if (fabs(overlap.y) > fabs(overlap.x)) {
+		overlap.y = 0;
+	} else {
+		overlap.x = 0;
+	}
+	player->rect.position += overlap;
 }
