@@ -17,7 +17,7 @@ private:
 	static InputManager* instance;
 
 	Uint32 mouseState;
-	Uint8* keyStates;
+	Uint8 keyStates[SDL_NUM_SCANCODES];
 	Uint8 oldKeyStates[SDL_NUM_SCANCODES];
 	bool quitGame;
 	int mouseX;

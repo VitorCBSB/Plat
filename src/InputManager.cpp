@@ -10,7 +10,7 @@
 InputManager* InputManager::instance = NULL;
 
 InputManager::InputManager() :
-		mouseState(0), keyStates(NULL), quitGame(false), mouseX(0), mouseY(0) {
+		mouseState(0), quitGame(false), mouseX(0), mouseY(0) {
 	initMouse();
 }
 
@@ -27,16 +27,16 @@ void InputManager::update() {
 	SDL_Event event;
 
 	if (keyStates) {
-		memcpy(oldKeyStates, keyStates, sizeof(Uint8));
+		memcpy(oldKeyStates, keyStates, SDL_NUM_SCANCODES * sizeof(Uint8));
 	}
-	keyStates = (Uint8*) SDL_GetKeyboardState(NULL);
+	Uint8* tempKeyStates = (Uint8*) SDL_GetKeyboardState(NULL);
+	memcpy(keyStates, tempKeyStates, SDL_NUM_SCANCODES * sizeof(Uint8));
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY);
 
 	initMouse();
 
-	// TODO nao funciona, ver depois.
 	for (int i = 0; i < SDL_NUM_SCANCODES; i++) {
-		keyDownUp[i] = keyStates[i] - oldKeyStates[i];
+		keyDownUp[i] = (int) keyStates[i] - (int) oldKeyStates[i];
 	}
 
 	while (SDL_PollEvent(&event)) {
