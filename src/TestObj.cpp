@@ -40,7 +40,7 @@ void TestObj::update(double dt) {
 		}
 	}
 
-	Vector2 gravity = Vector2(0, ACCELERATION);
+	Vector2 gravity = Vector2(0, GRAVITY);
 	Vector2 totalForce = gravity + acceleration;
 
 	velocity += (totalForce * dt);
