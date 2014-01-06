@@ -35,8 +35,8 @@ void TestObj::update(double dt) {
 	}
 	// Pulo de tamanho variavel
 	if (InputManager::get()->isKeyUp(SDL_SCANCODE_SPACE)) {
-		if (velocity.y < -5000) {
-			velocity.y = -5000;
+		if (velocity.y < -300) {
+			velocity.y = -300;
 		}
 	}
 
