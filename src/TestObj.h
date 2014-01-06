@@ -19,7 +19,8 @@
 
 #define MAX_SPEED 500.0
 #define ACCELERATION 1000.0
-#define JUMP 60000
+#define JUMP 60000.0
+#define JUMP_SPEED_CUT 300
 #define FRICTION 3.5
 
 class TestObj: public GameObject {
