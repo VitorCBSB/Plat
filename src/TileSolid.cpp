@@ -39,8 +39,10 @@ void TileSolid::onCollision(TestObjPtr player) {
 
 	if (fabs(overlap.y) > fabs(overlap.x)) {
 		overlap.y = 0;
+		player->velocity.x = 0;
 	} else {
 		overlap.x = 0;
+		player->velocity.y = 0;
 	}
 	player->rect.position += overlap;
 }
