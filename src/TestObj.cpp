@@ -33,6 +33,12 @@ void TestObj::update(double dt) {
 	if (InputManager::get()->isKeyDown(SDL_SCANCODE_SPACE)) {
 		acceleration += Vector2(0, -JUMP);
 	}
+	// Pulo de tamanho variavel
+	if (InputManager::get()->isKeyUp(SDL_SCANCODE_SPACE)) {
+		if (velocity.y < -5000) {
+			velocity.y = -5000;
+		}
+	}
 
 	Vector2 gravity = Vector2(0, ACCELERATION);
 	Vector2 totalForce = gravity + acceleration;
