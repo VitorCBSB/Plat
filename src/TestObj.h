@@ -21,7 +21,7 @@
 #define ACCELERATION 1000.0
 #define GRAVITY 1200.0
 #define JUMP 60000.0
-#define JUMP_SPEED_CUT 300
+#define JUMP_SPEED_CUT 380
 #define FRICTION 3.5
 
 class TestObj: public GameObject {
