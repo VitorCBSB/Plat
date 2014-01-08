@@ -30,6 +30,10 @@ public:
 	int getWidth();
 	int getHeightClipped();
 	int getWidthClipped();
+
+	void setHidden(bool hidden) {
+		this->hidden = hidden;
+	}
 };
 
 typedef std::tr1::shared_ptr<Sprite> SpritePtr;
