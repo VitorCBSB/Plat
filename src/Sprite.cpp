@@ -35,14 +35,16 @@ void Sprite::render(int x, int y, bool center) {
 	SDL_Rect dst;
 	int textureW, textureH;
 
-	SDL_QueryTexture(texture, NULL, NULL, &textureW, &textureH);
+	if (!hidden) {
+		SDL_QueryTexture(texture, NULL, NULL, &textureW, &textureH);
 
-	dst.x = center ? x - (std::min(clip.w, textureW) / 2) : x;
-	dst.y = center ? y - (std::min(clip.h, textureH) / 2) : y;
-	dst.w = std::min(clip.w, textureW);
-	dst.h = std::min(clip.h, textureH);
+		dst.x = center ? x - (std::min(clip.w, textureW) / 2) : x;
+		dst.y = center ? y - (std::min(clip.h, textureH) / 2) : y;
+		dst.w = std::min(clip.w, textureW);
+		dst.h = std::min(clip.h, textureH);
 
-	SDLBase::renderTexture(texture, &clip, &dst);
+		SDLBase::renderTexture(texture, &clip, &dst);
+	}
 }
 
 int Sprite::getHeight() {
