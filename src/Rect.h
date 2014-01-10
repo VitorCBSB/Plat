@@ -19,6 +19,7 @@ public:
 
 	float area();
 	bool collidesWith(Rect other);
+	Vector2 intersection(Rect other);
 };
 
 #endif /* RECT_H_ */

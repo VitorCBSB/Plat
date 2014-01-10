@@ -31,3 +31,24 @@ bool Rect::collidesWith(Rect other) {
 	return true;
 
 }
+
+Vector2 Rect::intersection(Rect other) {
+	float minDistanceX = this->w / 2 + other.w / 2;
+	float minDistanceY = this->h / 2 + other.h / 2;
+
+	float distanceX = this->position.x - other.position.x;
+	float distanceY = this->position.y - other.position.y;
+
+	if (fabs(distanceX) > minDistanceX || fabs(distanceY) > minDistanceY) {
+		return Vector2(0, 0);
+	}
+
+	distanceX =
+			distanceX > 0 ?
+					minDistanceX - distanceX : -minDistanceX - distanceX;
+	distanceY =
+			distanceY > 0 ?
+					minDistanceY - distanceY : -minDistanceY - distanceY;
+
+	return Vector2(distanceX, distanceY);
+}
