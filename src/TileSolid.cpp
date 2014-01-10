@@ -15,27 +15,8 @@ TileSolid::TileSolid(Rect hitBox, TileSetPtr tileSet, int tileIndex) :
 TileSolid::~TileSolid() {
 }
 
-float TileSolid::xOverlap(TestObjPtr player) {
-	if (player->getHitbox().position.x < this->hitBox.position.x) {
-		return this->hitBox.position.x - (this->hitBox.w / 2)
-				- (player->getHitbox().position.x + (player->getHitbox().w / 2));
-	}
-	return this->hitBox.position.x + (this->hitBox.w / 2)
-			- (player->getHitbox().position.x - (player->getHitbox().w / 2));
-}
-
-float TileSolid::yOverlap(TestObjPtr player) {
-	if (player->getHitbox().position.y < this->hitBox.position.y) {
-		return this->hitBox.position.y - (this->hitBox.h / 2)
-				- (player->getHitbox().position.y + (player->getHitbox().h / 2));
-	}
-	return this->hitBox.position.y + (this->hitBox.h / 2)
-			- (player->getHitbox().position.y - (player->getHitbox().h / 2));
-
-}
-
 void TileSolid::onCollision(TestObjPtr player) {
-	Vector2 overlap(xOverlap(player), yOverlap(player));
+	Vector2 overlap = player->rect.intersection(this->hitBox);
 
 	if (fabs(overlap.y) > fabs(overlap.x)) {
 		overlap.y = 0;
