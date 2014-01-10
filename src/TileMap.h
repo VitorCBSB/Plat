@@ -30,6 +30,7 @@ private:
 	TilePtr tileMatrix[LAYERS][LINES][COLUMNS];
 
 	void load(std::string fileName);
+	void positionToIndex(Vector2 position, int* i, int* j);
 
 public:
 	TileMap(std::string fileName, std::string tileSetFileName, int tileWidth,

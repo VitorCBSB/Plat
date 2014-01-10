@@ -79,3 +79,8 @@ void TileMap::checkCollision(TestObjPtr player) {
 void TileMap::setPosition(Vector2 newPosition) {
 	this->position = newPosition;
 }
+
+void TileMap::positionToIndex(Vector2 position, int* i, int* j) {
+	*i = (int) floor(position.y / tileHeight);
+	*j = (int) floor(position.x / tileWidth);
+}
