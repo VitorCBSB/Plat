@@ -24,6 +24,7 @@ public:
 	void operator*=(float scalar);
 	float operator*(Vector2 other);
 	float length();
+	float distance(Vector2 other);
 	Vector2 normalize();
 	Vector2 rotate(float angleInDegrees);
 	Vector2 normalVector();

@@ -67,3 +67,8 @@ Vector2 Vector2::normalVector() {
 	return rotate(90);
 }
 
+float Vector2::distance(Vector2 other) {
+	float diffx = this->x - other.x;
+	float diffy = this->y - other.y;
+	return sqrt((diffx * diffx) + (diffy * diffy));
+}
