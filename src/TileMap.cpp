@@ -65,12 +65,45 @@ void TileMap::render(float cameraX, float cameraY) {
 }
 
 void TileMap::checkCollision(TestObjPtr player) {
+	collidingTile collidingTiles[30];
+	int n = 0;
+
 	for (int k = 0; k < LAYERS; k++) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
 				if (tileMatrix[k][i][j]->collidesWith(player)) {
-					tileMatrix[k][i][j]->onCollision(player);
+					collidingTile temp;
+					temp.distanceToPlayer = player->rect.position.distance(
+							tileMatrix[k][i][j]->getBox().position);
+					temp.tile = tileMatrix[k][i][j];
+
+					collidingTiles[n] = temp;
+					n++;
 				}
+			}
+		}
+	}
+
+	sort(collidingTiles, n);
+
+	for (int i = 0; i < n; i++) {
+		collidingTiles[i].tile->onCollision(player);
+	}
+
+}
+
+void TileMap::sort(collidingTile* collidingTiles, int size) {
+	bool trocou = true;
+	while (trocou) {
+		trocou = false;
+		for (int i = 0; i < size - 1; i++) {
+			if (collidingTiles[i].distanceToPlayer
+					> collidingTiles[i + 1].distanceToPlayer) {
+				trocou = true;
+				collidingTile temp;
+				temp = collidingTiles[i];
+				collidingTiles[i] = collidingTiles[i + 1];
+				collidingTiles[i + 1] = temp;
 			}
 		}
 	}

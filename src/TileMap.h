@@ -15,6 +15,8 @@
 #include "Vector2.h"
 #include <string>
 #include <stdio.h>
+#include <vector>
+#include <algorithm>
 #include <tr1/memory>
 
 #define LINES 10
@@ -29,8 +31,14 @@ private:
 	Vector2 position;
 	TilePtr tileMatrix[LAYERS][LINES][COLUMNS];
 
+	typedef struct _collidingTile {
+		float distanceToPlayer;
+		TilePtr tile;
+	} collidingTile;
+
 	void load(std::string fileName);
 	void positionToIndex(Vector2 position, int* i, int* j);
+	void sort(collidingTile* collidingTiles, int size);
 
 public:
 	TileMap(std::string fileName, std::string tileSetFileName, int tileWidth,
