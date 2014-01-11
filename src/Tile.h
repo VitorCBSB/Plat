@@ -16,7 +16,7 @@
 
 class Tile {
 protected:
-	Rect hitBox;
+	Rect box;
 	TileSetPtr tileSet;
 	int tileIndex;
 
@@ -27,6 +27,10 @@ public:
 	virtual bool collidesWith(TestObjPtr player);
 	virtual void onCollision(TestObjPtr player) = 0;
 	void render(float cameraX, float cameraY);
+
+	Rect getBox() {
+		return box;
+	}
 };
 
 typedef std::tr1::shared_ptr<Tile> TilePtr;

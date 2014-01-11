@@ -16,7 +16,7 @@ TileSolid::~TileSolid() {
 }
 
 void TileSolid::onCollision(TestObjPtr player) {
-	Vector2 overlap = player->rect.intersection(this->hitBox);
+	Vector2 overlap = player->rect.intersection(this->box);
 
 	if (fabs(overlap.y) > fabs(overlap.x)) {
 		overlap.y = 0;
