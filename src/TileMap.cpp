@@ -68,6 +68,8 @@ void TileMap::checkCollision(TestObjPtr player) {
 	collidingTile collidingTiles[30];
 	int n = 0;
 
+	player->setOnGround(false);
+
 	for (int k = 0; k < LAYERS; k++) {
 		for (int i = 0; i < LINES; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
