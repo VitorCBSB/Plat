@@ -48,6 +48,9 @@ public:
 	Vector2 getPosition() {
 		return rect.position;
 	}
+	void setOnGround(bool onGround) {
+		this->onGround = onGround;
+	}
 };
 
 typedef std::tr1::shared_ptr<TestObj> TestObjPtr;
