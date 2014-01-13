@@ -24,6 +24,9 @@ void TileSolid::onCollision(TestObjPtr player) {
 	} else {
 		overlap.x = 0;
 		player->velocity.y = 0;
+		if (player->rect.position.y < this->box.position.y) {
+			player->setOnGround(true);
+		}
 	}
 	player->rect.position += overlap;
 }
