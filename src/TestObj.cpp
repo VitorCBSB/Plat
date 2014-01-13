@@ -8,7 +8,7 @@
 #include "TestObj.h"
 
 TestObj::TestObj(SpritePtr sprite, Rect rect) :
-		GameObject(), sprite(sprite), rect(rect), acceleration(Vector2(0, 0)), velocity(
+		GameObject(), sprite(sprite), onGround(true), rect(rect), acceleration(Vector2(0, 0)), velocity(
 				Vector2(0, 0)) {
 }
 
@@ -34,7 +34,7 @@ void TestObj::update(double dt) {
 		acceleration += Vector2(0, -JUMP);
 	}
 	// Pulo de tamanho variavel
-	if (InputManager::get()->isKeyUp(SDL_SCANCODE_SPACE)) {
+	if (InputManager::get()->isKeyUp(SDL_SCANCODE_SPACE) && onGround) {
 		if (velocity.y < -JUMP_SPEED_CUT) {
 			velocity.y = -JUMP_SPEED_CUT;
 		}
