@@ -27,7 +27,7 @@
 class TestObj: public GameObject {
 private:
 	SpritePtr sprite;
-	bool onGround;	// Tratamentos de colisão são responsáveis por tornar essa variável true
+	bool onGround; // Tratamentos de colisão são responsáveis por tornar essa variável true
 
 public:
 	Rect rect;
