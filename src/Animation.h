@@ -27,8 +27,8 @@ public:
 			int frameTime, bool looping);
 	virtual ~Animation();
 
-	void update(double dt);
-	void render(int x, int y, bool center);
+	void update();
+	void render(int x, int y, bool center = true);
 
 	int getFrameHeight() const {
 		return frameHeight;
