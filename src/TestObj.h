@@ -9,7 +9,7 @@
 #define TESTOBJ_H_
 
 #include "GameObject.h"
-#include "Sprite.h"
+#include "Animation.h"
 #include "Vector2.h"
 #include "Rect.h"
 #include "InputManager.h"
@@ -23,10 +23,11 @@
 #define JUMP 60000.0
 #define JUMP_SPEED_CUT 380
 #define FRICTION 3.5
+#define MAX_ANIMATION_TIME 400
 
 class TestObj: public GameObject {
 private:
-	SpritePtr sprite;
+	AnimationPtr animation;
 	bool onGround; // Tratamentos de colisão são responsáveis por tornar essa variável true
 
 public:
@@ -34,7 +35,7 @@ public:
 	Vector2 acceleration;
 	Vector2 velocity;
 
-	TestObj(SpritePtr sprite, Rect rect);
+	TestObj(AnimationPtr animation, Rect rect);
 	virtual ~TestObj();
 
 	void update(double dt);

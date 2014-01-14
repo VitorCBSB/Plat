@@ -7,8 +7,8 @@
 
 #include "TestObj.h"
 
-TestObj::TestObj(SpritePtr sprite, Rect rect) :
-		GameObject(), sprite(sprite), onGround(true), rect(rect), acceleration(
+TestObj::TestObj(AnimationPtr animation, Rect rect) :
+		GameObject(), animation(animation), onGround(true), rect(rect), acceleration(
 				Vector2(0, 0)), velocity(Vector2(0, 0)) {
 }
 
@@ -41,8 +41,12 @@ void TestObj::update(double dt) {
 	rect.position += (velocity * dt);
 
 	velocity *= (1.0 - std::min(FRICTION * dt, 1.0));
+
+	animation->setFrameTime(MAX_ANIMATION_TIME - fabs(velocity.x));
+	animation->update();
+
 }
 
 void TestObj::render(float cameraX, float cameraY) {
-	sprite->render(rect.position.x - cameraX, rect.position.y - cameraY);
+	animation->render(rect.position.x - cameraX, rect.position.y - cameraY);
 }
