@@ -9,6 +9,7 @@
 #define ANIMATION_H_
 
 #include "Sprite.h"
+#include "Timer.h"
 #include <tr1/memory>
 
 class Animation {
@@ -17,7 +18,9 @@ private:
 	int frameWidth;
 	int frameHeight;
 	int frameTime;
+	int currentFrame;
 	bool looping;
+	Timer timer;
 
 public:
 	Animation(SpritePtr animationSheet, int frameWidth, int frameHeight,
@@ -25,6 +28,7 @@ public:
 	virtual ~Animation();
 
 	void update(double dt);
+	void render(int x, int y, bool center);
 
 	int getFrameHeight() const {
 		return frameHeight;
