@@ -18,9 +18,12 @@ Game::~Game() {
 int Game::run() {
 	TestObjPtr testObj(
 			new TestObj(
-					AnimationPtr(new Animation(
-							SpritePtr(new Sprite("../img/testeAnimacao.png")),
-							64, 64, 200, true)),
+					AnimationPtr(
+							new Animation(
+									SpritePtr(
+											new Sprite(
+													"../img/testeAnimacao.png")),
+									64, 64, 200, true)),
 					Rect(Vector2(400, 300), 64, 64)));
 	TileMapPtr tileMap(
 			new TileMap(std::string("../maps/testMap.map"),
