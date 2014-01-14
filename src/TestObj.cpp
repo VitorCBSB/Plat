@@ -18,8 +18,8 @@ TestObj::~TestObj() {
 void TestObj::update(double dt) {
 	acceleration = Vector2(0, 0);
 
-	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_S)) {
-		acceleration += Vector2(0, ACCELERATION);
+	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_A)) {
+		acceleration += Vector2(-ACCELERATION, 0);
 	}
 	if (InputManager::get()->isKeyHeld(SDL_SCANCODE_D)) {
 		acceleration += Vector2(ACCELERATION, 0);
