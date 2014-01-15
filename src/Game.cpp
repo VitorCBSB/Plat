@@ -35,7 +35,6 @@ int Game::run() {
 	while (!InputManager::get()->QuitGame()) {
 		InputManager::get()->update();
 
-		camera->update(dt);
 		testObj->update(dt);
 		tileMap->checkCollision(testObj);
 		tileMap->render(camera->getX(), camera->getY());

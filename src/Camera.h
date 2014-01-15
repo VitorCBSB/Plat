@@ -17,11 +17,9 @@
 #define SPEED 500
 
 class Camera {
-private:
-	Vector2 position;
-	Vector2 velocity;
-
 public:
+	Vector2 position;
+
 	Camera();
 	void update(double dt);
 	float getX();
