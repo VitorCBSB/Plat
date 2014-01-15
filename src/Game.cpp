@@ -37,8 +37,11 @@ int Game::run() {
 
 		testObj->update(dt);
 		tileMap->checkCollision(testObj);
-		tileMap->render(camera->getX(), camera->getY());
-		testObj->render(camera->getX(), camera->getY());
+		camera->position = testObj->rect.position;
+		camera->position.x -= WINDOW_WIDTH / 2;
+		camera->position.y -= WINDOW_HEIGHT / 2;
+		tileMap->render(camera->position.x, camera->position.y);
+		testObj->render(camera->position.x, camera->position.y);
 		SDLBase::updateScreen();
 		SDLBase::clearScreen();
 		SDL_Delay((1.0 / FPS) * 1000);
