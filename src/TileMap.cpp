@@ -11,8 +11,9 @@ TileMap::TileMap(std::string fileName, std::string tileSetFileName,
 		int tileWidth, int tileHeight) :
 		tileSet(
 				TileSetPtr(
-						new TileSet(tileSetFileName, tileWidth, tileHeight))), tileWidth(
-				tileWidth), tileHeight(tileHeight), position(Vector2(0, 0)) {
+						new TileSet(tileSetFileName, tileWidth, tileHeight))), layers(
+				0), lines(0), columns(0), tileWidth(tileWidth), tileHeight(
+				tileHeight), position(Vector2(0, 0)) {
 	load(fileName);
 }
 
@@ -29,12 +30,14 @@ void TileMap::load(std::string fileName) {
 		exit(1);
 	}
 
-	for (int k = 0; k < LAYERS; k++) {
-		for (int i = 0; i < LINES; i++) {
-			for (int j = 0; j < COLUMNS; j++) {
+	fscanf(fp, "%d %d %d", &layers, &lines, &columns);
+
+	for (int k = 0; k < layers; k++) {
+		for (int i = 0; i < lines; i++) {
+			for (int j = 0; j < columns; j++) {
 				fscanf(fp, "%d", &tileIndex);
 				// Se for a camada mais proxima da tela, entao cria tiles solidos
-				if (tileIndex != -1 && k == LAYERS - 1) {
+				if (tileIndex != -1 && k == layers - 1) {
 					tileMatrix[k][i][j] = TilePtr(
 							new TileSolid(
 									Rect(Vector2(j * tileWidth, i * tileHeight),
@@ -55,9 +58,9 @@ void TileMap::load(std::string fileName) {
 }
 
 void TileMap::render(float cameraX, float cameraY) {
-	for (int k = 0; k < LAYERS; k++) {
-		for (int i = 0; i < LINES; i++) {
-			for (int j = 0; j < COLUMNS; j++) {
+	for (int k = 0; k < layers; k++) {
+		for (int i = 0; i < lines; i++) {
+			for (int j = 0; j < columns; j++) {
 				tileMatrix[k][i][j]->render(cameraX, cameraY);
 			}
 		}
@@ -73,13 +76,13 @@ void TileMap::checkCollision(TestObjPtr player) {
 
 	positionToIndex(player->rect.position, &line, &column);
 
-	for (int i = line - 1; i <= line + 1; i++) {
-		for (int j = column - 1; j <= column + 1; j++) {
-			if (tileMatrix[LAYERS - 1][i][j]->collidesWith(player)) {
+	for (int i = std::max(0, line - 1); i <= std::min(lines - 1, line + 1); i++) {
+		for (int j = std::max(0, column - 1); j <= std::min(columns - 1, column + 1); j++) {
+			if (tileMatrix[layers - 1][i][j]->collidesWith(player)) {
 				collidingTile temp;
 				temp.distanceToPlayer = player->rect.position.distance(
-						tileMatrix[LAYERS - 1][i][j]->getBox().position);
-				temp.tile = tileMatrix[LAYERS - 1][i][j];
+						tileMatrix[layers - 1][i][j]->getBox().position);
+				temp.tile = tileMatrix[layers - 1][i][j];
 
 				collidingTiles[n] = temp;
 				n++;

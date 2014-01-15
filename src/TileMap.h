@@ -19,13 +19,16 @@
 #include <algorithm>
 #include <tr1/memory>
 
-#define LINES 10
-#define COLUMNS 10
-#define LAYERS 1
+#define LINES 100
+#define COLUMNS 100
+#define LAYERS 3
 
 class TileMap {
 private:
 	TileSetPtr tileSet;
+	int layers;
+	int lines;
+	int columns;
 	int tileWidth;
 	int tileHeight;
 	Vector2 position;
