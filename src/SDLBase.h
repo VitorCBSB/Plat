@@ -15,8 +15,10 @@
 #include <stdlib.h>
 #include <string>
 
-class SDLBase {
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
 
+class SDLBase {
 private:
 	static SDL_Renderer* screenRenderer;
 	static SDL_Window* screen;

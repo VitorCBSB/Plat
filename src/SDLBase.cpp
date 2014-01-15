@@ -17,7 +17,8 @@ int SDLBase::initializeSDL() {
 		exit(1);
 	}
 
-	screen = SDL_CreateWindow("Plat", 500, 500, 800, 600, SDL_WINDOW_SHOWN);
+	screen = SDL_CreateWindow("Plat", 500, 500, WINDOW_WIDTH, WINDOW_HEIGHT,
+			SDL_WINDOW_SHOWN);
 	screenRenderer = SDL_CreateRenderer(screen, -1,
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
