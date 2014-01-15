@@ -19,7 +19,7 @@
 
 #define MAX_SPEED 500.0
 #define ACCELERATION 1000.0
-#define GRAVITY 1200.0
+#define GRAVITY 1500.0
 #define JUMP 80000.0
 #define JUMP_SPEED_CUT 380
 #define FRICTION 3.5
